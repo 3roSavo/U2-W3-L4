@@ -5,25 +5,49 @@
 
 
 const loadFirstImages = (object) => {
-    
-    const photos = object.photos
-
-    for (let i = 0; i< 9; i++) {
-        const urlPhoto = photos[i].src.medium
-        const image = document.getElementsByTagName("img")[i]
-        image.src = urlPhoto
+    const buttonLoad = document.getElementsByClassName("btn btn-primary my-2")[0]
+    buttonLoad.addEventListener("click", () => {
 
 
-        console.log(urlPhoto)
-    }
-        
+        const images = document.querySelectorAll(".bd-placeholder-img.card-img-top")
 
+        // const photos = object.photos
+        // for (let i = 0; i < images.length; i++) {
+        //     const urlPhoto = photos[i].src.medium
+        //     images[i].src = urlPhoto
+        // }
+
+        images.forEach( (image,i) => {
+            const urlImage =  object.photos[i].src.medium
+            images[i].src = urlImage
+        })
+    })
+}
+
+const loadSecondImages = (object) => {
+    const buttonLoad = document.getElementsByClassName("btn btn-secondary my-2")[0]
+    buttonLoad.addEventListener("click", () => {
+
+
+        const images = document.querySelectorAll(".bd-placeholder-img.card-img-top")
+
+        // const photos = object.photos
+        // for (let i = 0; i < images.length; i++) {
+        //     const urlPhoto = photos[i].src.medium
+        //     images[i].src = urlPhoto
+        // }
+
+        images.forEach( (image,i) => {
+            const urlImage =  object.photos[i].src.medium
+            images[i].src = urlImage
+        })
+    })
 }
 
 
 fetch("https://api.pexels.com/v1/search?query=monkeys", {
     headers: {
-        Authorization: "ifbuQCuGTrbmEOof10n9yXGfVaWjUFcpLwodmFpq5GtLg0BZxQJcDjHy"
+        authorization: "ifbuQCuGTrbmEOof10n9yXGfVaWjUFcpLwodmFpq5GtLg0BZxQJcDjHy"
     }
 })
 
@@ -40,6 +64,7 @@ fetch("https://api.pexels.com/v1/search?query=monkeys", {
     console.log(obj)
 
     loadFirstImages(obj)
+    loadSecondImages(obj)
 })
 
 
